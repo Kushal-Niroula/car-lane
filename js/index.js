@@ -29,7 +29,7 @@ var hs = document.getElementById("hs");
 
 
 var highscore = parseInt(localStorage.getItem("Highscore"));
-if (highscore === null){
+if (highscore === null || highscore === undefined){
     highscore =0;
 }
 
