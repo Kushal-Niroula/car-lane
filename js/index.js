@@ -11,6 +11,10 @@ var obs = [];
 var isGameOver = false;
 var acc = 0;
 var score = 0;
+var scoreBoard = document.getElementById("score");
+var para = document.getElementsByClassName("score")[0];
+var hs = document.getElementById("hs");
+var highscore = 0;
 
 
 var playerCar = {
@@ -39,6 +43,7 @@ obs.forEach(function(ob){
     if(ob.y>(playerCar.y+playerCar.h)){
         score++;
         obs.splice(k,1);
+        scoreBoard.innerHTML=score;
     }
 
 checkCollision(playerCar.x,playerCar.y,ob.x,ob.y,50,70);
@@ -85,7 +90,7 @@ function randomObs(){
 
 function lane(){
     lanePosition=lanePosition+3+acc;
-    acc=acc+0.001;
+    acc=acc+0.003;
 if(lanePosition>=20){
     lanePosition=-40;
 }
@@ -94,23 +99,40 @@ for (var j=lanePosition ; j<canvas.height; j=j+60){
     drawLane(261,j);
 }
 }
+
 setInterval(function(){
-    let posx = randomObs().x;
-    let posy = randomObs().y;
+    for (var l=0;l<Math.ceil(score+1/10);l++){
+    let posx1 = randomObs().x;
+    let posy1 = randomObs().y;
+    obs.forEach(function(ob){
+        if (posx1 == ob.x && Math.abs(posy1-ob.y) <=70 ){
+                posy1= posy1 - 75;
+        }
+        if(posx1 != ob.x && Math.abs(posy1-ob.y)<=140){
+            posy1 = ob.y - 180;
+        }
+    })
+
     obs.push({
-       x:posx,
-       y:posy, 
+       x:posx1,
+       y:posy1, 
        img:randomObs().img
 
-    })
-},3000);
+    })}
+
+},2500);
 
 function checkCollision(x1,y1,x2,y2,w,h){
     if (x1+ w >= x2 && x1 <= x2 + 2 && y1 + h >= y2 && y1 <= y2 + h) {
         isGameOver =true;
-        console.log(score);
-    
-    }
+        if(score > highscore){
+            highscore = score;
+        }
+            hs.innerHTML= "Highscore";
+            para.style.backgroundColor="red";
+            score.innerHTML = highscore;
+            
+}
 }
 
 

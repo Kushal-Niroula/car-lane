@@ -4,3 +4,19 @@
 #canvas{
     margin-left:25%;
 }
+#game{
+    position:relative;
+}
+.score{
+    position: absolute;
+    left:10%;
+    top:10%;
+    padding:5px;
+    background-color: yellowgreen;
+
+
+}
+#score{
+    margin-left:10px;
+
+}
