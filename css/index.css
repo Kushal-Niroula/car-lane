@@ -2,12 +2,14 @@
     display:none;
 }
 #canvas{
+    display: none;
     margin-left:25%;
 }
 #game{
     position:relative;
 }
 .score{
+    display: none;;
     position: absolute;
     left:10%;
     top:10%;
@@ -16,7 +18,30 @@
 
 
 }
-#score{
+#score ,#hs{
     margin-left:10px;
 
+}
+#game-over {
+    display:none;
+    text-align: center;
+}
+#game-over a{
+    padding:8px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: red;
+    color:white;
+}
+#game-over a:hover{
+    background-color: yellowgreen;
+}
+.start{
+    text-align: center;
+}
+#play{
+    padding:8px;
+    font-size: 25px;
+    background-color: greenyellow;
+    cursor: pointer;
 }

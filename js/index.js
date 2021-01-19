@@ -1,3 +1,8 @@
+play = document.getElementById("play");
+play.addEventListener('click',main);
+
+function main(){
+start= document.getElementsByClassName("start")[0];
 canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
 canvas.height = 650;
@@ -5,6 +10,13 @@ canvas.width = 400;
 player = document.getElementById("player");
 obs1 = document.getElementById("obs1");
 obs2 = document.getElementById("obs2");
+over = document.getElementById("game-over");
+replay = document.getElementById("replay");
+board = document.getElementsByClassName("score")[0];
+start.style.display = "none";
+canvas.style.display="block";
+board.style.display="block";
+
 canvas.style.backgroundColor = "#9d9c9b";
 var lanePosition = 0;
 var obs = [];
@@ -14,7 +26,12 @@ var score = 0;
 var scoreBoard = document.getElementById("score");
 var para = document.getElementsByClassName("score")[0];
 var hs = document.getElementById("hs");
-var highscore = 0;
+
+
+var highscore = parseInt(localStorage.getItem("Highscore"));
+if (highscore === null){
+    highscore =0;
+}
 
 
 var playerCar = {
@@ -127,18 +144,24 @@ function checkCollision(x1,y1,x2,y2,w,h){
         isGameOver =true;
         if(score > highscore){
             highscore = score;
+            localStorage.setItem('Highscore',highscore);
         }
-            hs.innerHTML= "Highscore";
-            para.style.backgroundColor="red";
-            score.innerHTML = highscore;
+        hs.innerHTML+= highscore;
+        gameOver();
             
 }
 }
 
+function gameOver(){
+    canvas.style.display = "none";
+    over.style.display = "block";
+
+}
+
+replay.addEventListener('click',function(){
+    location.reload();
+})
 
 
 
-
-
-
-
+}

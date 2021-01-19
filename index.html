@@ -8,7 +8,13 @@
 </head>
 <body>
     <div class= "game">
-    <div class="score"><span id="hs"> Score</span> <span id = "score"></span></div>
+    <div class="score"> Score<span id = "score"></span></div>
+    <div class="start">
+        <h1>Welcome to 2d car-lane game </h1>
+        <p>rule is simple, left arrow to go left , right to go right</p>
+        <a id = "play"> Play </a>
+
+    </div>
     <canvas id =  "canvas">
 
     </canvas>
@@ -17,6 +23,13 @@
     <img src = "assets/player.png" id = "player" />
     <img src = "assets/obsCar1.png" id = "obs1" />
     <img src = "assets/obsCar2.png" id = "obs2" />
+
+    <div id="game-over"><div class="top">HighScore <span id="hs"></span></div>
+    
+    <p>Do you want to play again</p>
+    <a id ="replay">Replay</a>
+    
+    </div>
     <script src="js/index.js" ></script>
     
 </body>
