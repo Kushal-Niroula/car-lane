@@ -76,8 +76,9 @@ function main(){
             drawImg(ob.img,ob.x,ob.y,carWidth,carHeight);
             ob.y = ob.y + 1 + acc;
             if(ob.y>(playerCar.y + playerCar.h)){
-                score++;
+                
                 obs.splice(k,1);
+                score++;
                 scoreBoard.innerHTML = score;
             }
 
