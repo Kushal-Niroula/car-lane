@@ -146,7 +146,7 @@ function checkCollision(x1,y1,x2,y2,w,h){
             highscore = score;
             localStorage.setItem('Highscore',highscore);
         }
-        hs.innerHTML+= highscore;
+        hs.innerHTML = highscore;
         gameOver();
             
 }
@@ -159,7 +159,7 @@ function gameOver(){
 }
 
 replay.addEventListener('click',function(){
-    location.reload();
+    main();
 })
 
 
