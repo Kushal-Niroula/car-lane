@@ -14,7 +14,8 @@ function main(){
     const carWidth = 50;
     const carHeight = 70;
     const laneWidth = 129;
-    const initialSpeed = 3;
+    const initialSpeed = 4;
+    let k = 0;
 
 
     var highscore = parseInt(localStorage.getItem("Highscore"));
@@ -69,7 +70,7 @@ function main(){
         lane();
 
         drawImg(player,playerCar.x,playerCar.y,playerCar.w,playerCar.h);
-        var k = 0;
+        k = 0;
         obs.forEach(function(ob){
     
             drawImg(ob.img,ob.x,ob.y,carWidth,carHeight);
@@ -144,7 +145,7 @@ function main(){
 
     /* setinterval to generate obstacles */
     setInterval(function(){
-        for (var l = 0;l < Math.ceil(score+1/10);l++){
+        for (var l = 0;l < Math.ceil((score+1)/10);l++){
         let posx1 = randomObs().x;
         let posy1 = randomObs().y;
         obs.forEach(function(ob){
