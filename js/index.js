@@ -1,13 +1,14 @@
 play = document.getElementById("play");
 play.addEventListener('click',main);
 
+
 /* main function to execute when the game is starts or replayed */
 
 function main(){
 
     /* defining in game parameters */
     var lanePosition = 0;
-    var obs = [];
+    var obs = []; 
     var isGameOver = false;
     var acc = 0;
     var score = 0;
@@ -145,7 +146,7 @@ function main(){
     }
 
     /* setinterval to generate obstacles */
-    setInterval(function(){
+    var obsGenerate = setInterval(function(){
         for (var l = 0;l < Math.ceil((score+1)/10);l++){
         let posx1 = randomObs().x;
         let posy1 = randomObs().y;
@@ -178,6 +179,7 @@ function main(){
                 localStorage.setItem('Highscore',highscore); /*adding the highscore in local storage */
             }
             hs.innerHTML = highscore;
+            clearInterval(obsGenerate);
             gameOver();
                 
     }
